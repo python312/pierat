@@ -58,6 +58,10 @@
 - **DNS Poisoner**: Block or unblock domains, including AV sites.
   - `/block_av`, `/unblock_av`
   - `/block_domain <DOMAIN>`, `/unblock_domain <DOMAIN>`
+- **Ransomware**: On demand encryption and decryption with Fernet.
+  - `/set_key <KEY>`, `/encrypt_files`, `/decrypt_files`
+
+
 
 ---
 
