@@ -150,3 +150,4 @@ The system operates with the ```populator.py``` script, which serves as the sing
 ## Acknowledgements
 
 - ChatGPT, helped me in some of the minor things / bugs.
+- Pysilon, inspired me to make this.
