@@ -77,6 +77,14 @@ Modules are precompiled and hosted to save payload space.
 
 ---
 
+# Screenshots
+
+![screenshot](https://raw.githubusercontent.com/python312/pierat/refs/heads/main/photos/computers.png)
+![screenshot](https://raw.githubusercontent.com/python312/pierat/refs/heads/main/photos/sysinfo.png)
+![screenshot](https://raw.githubusercontent.com/python312/pierat/refs/heads/main/photos/screenshot.png)
+![screenshot](https://raw.githubusercontent.com/python312/pierat/refs/heads/main/photos/msg.png)
+
+
 ## Installation
 
 ### Prerequisites
@@ -84,13 +92,6 @@ Modules are precompiled and hosted to save payload space.
 - A Telegram bot token and Chat ID.
 - Python ( 3.11.9 is tested and working )
 
-
-## Installation
-
-
-### Prerequisites
-- Redis Server
-- Telegram bot token and Chat ID
 
 
 First clone this repo and travese into it.
@@ -119,6 +120,8 @@ pip install -r requirements.txt
 
 Edit the ```main.py``` and ```populator.py``` scripts and fill out with your configuration.
 
+---
+
 ## Usage
 
 1. Compile ```main.py``` with your favourite compiler, e.g ```pyinstaller``` ```nuitka```
@@ -126,13 +129,19 @@ Edit the ```main.py``` and ```populator.py``` scripts and fill out with your con
 3. Deploy the main.py executable to target machine.
 4. On the Telegram Bot send ```/list_computers``` to list computers connected and ```/set_computer <COMPUTER_ID>``` to channel commands into that computer
 
+---
+
 ## How it works.
 
 The system operates with the ```populator.py``` script, which serves as the single poller to fetch Telegram updates and populate them into the Redis server. This approach addresses the limitation of a single bot instance being allowed to poll updates by centralizing the process through ```populator.py```. This script is only required to run while interacting with the bot. Worker processes, referred to as "zombies," connect to the Redis server to retrieve and process updates, reducing load and bypassing polling restrictions. Zombies handle tasks based on their assigned roles, reacting to updates accordingly. The Redis server also manages the assignment of specific computers by comparing their UUIDs with preconfigured values that are set in the Redis. Additionally, ```populator.py``` processes global commands, such as ```/list_computers``` and ```/set_computer```
 
+---
+
 ## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=python312/pierat&type=Date)](https://star-history.com/#python312/pierat&Date)
+
+---
 
 ## Acknowledgements
 
