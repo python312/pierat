@@ -79,7 +79,7 @@ Modules are precompiled and hosted to save payload space.
 ### Prerequisites
 - A working Redis server.
 - A Telegram bot token and Chat ID.
-- Python 3.11.9
+- Python ( 3.11.9 is tested and working )
 
 
 ## Installation
