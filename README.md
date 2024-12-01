@@ -1,7 +1,9 @@
 
 # PieRat
 **Yet another RAT for administrating multiple clients via a Telegram bot.**
+---
 [![](https://dcbadge.limes.pink/api/server/u5VkfQ8Ehj)](https://discord.gg/u5VkfQ8Ehj)
+
 ---
 
 
