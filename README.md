@@ -1,41 +1,82 @@
 
 # PieRat
-Yet another RAT for administrating multiple clients connected to a telegram bot. 
+**Yet another RAT for administrating multiple clients via a Telegram bot.**
 
-```I decided to make this project public as I have lost the motivation to sell this. In order to prevent 'skids' from using this tool, I will not provide installation support. For the sake of this project, I will not give a tutorial on how to setup Redis Cloud.```
+---
 
-```I am not responsible for any damages inflicted by this tool, this tool was made for educational intent as a side project, I do not condone any malicious activity with this tool.```
-## Features
+### Disclaimer
+> This project was made for **educational purposes** as a side project. I do not condone or support any malicious activity involving this tool. Use responsibly and ethically.
+>
+> - **No Support:** I will not provide installation support or a tutorial on setting up Redis Cloud to prevent misuse.
+> - **No Liability:** I am not responsible for any damages caused by the use of this tool.
+
+---
+
+## Features / Commands
 
 ### General
+- **File Management**: Upload and download files via Telegram.
+  - `/upload` - Prompts for a file to upload to the chat.
+  - `/download` - Downloads files.
+- **Shell Commands**: Execute shell commands remotely.
+  - `/execute <SHELL_COMMAND>`
+- **System Info**: View system details.
+  - `/sys_info`
+- **Screenshot**: Take a screenshot of the target machine.
+  - `/screenshot`
+- **File Management Commands**:
+  - `/cd`, `/pwd`, `/ls`, `/move`, `/copy`, `/delete`, `/mkdir`
+- **Process Management**:
+  - `/ps` - List processes.
+  - `/pskill <PID or PROCESS NAME>` - Kill a process.
 
-- Upload / Download : Download and Upload files from/to Telegram.
-- Shell : Run shell commands.
-- Screenshot: Screenshot and send to user.
-- File management: Manage files on clients e.g cd, pwd, ls, move, copy, delete, mkdir.
-- Process Management: Be able to view and kill processes on demand.
-- Show system info
-
+---
 
 ### Fun
+- **Message Box**: Display a message box on the target machine.
+  - `/msg_box "TITLE" "CONTENT"`
+- **Jumpscare**: Play loud and frightening videos.
+  - `/jumpscare <PRESET>`
+- **Volume Control**:
+  - `/get_volume` - Get current volume.
+  - `/set_volume <INT>` - Set system volume.
+- **Audio Player**:
+  - `/start_audio <LOCAL_AUDIO_PATH>` - Play audio on the target.
+  - `/stop_audio` - Stop audio playback.
+- **Text-to-Speech**: Speak text on the target machine.
+  - `/tts <TEXT TO SPEAK>`
+- **Open URL**: Launch a URL in the default browser.
+  - `/open_url <URL>`
 
-- Message Box: Show message box to target computer.
-- Jumpscare: Play loud and frightening videos on target computer.
-- Volume Management: Set and Get Volume.
-- Audio Player: Start and Play audio from audio file on target.
-- TTS: Play Text To Speech on target computer.
-- Open URL: Open a url in default browser.
+---
 
 ### Other
-- Keylogger: Start and Stop Keylogging.
-- Proxy: Start and Stop Proxy, host with ngrok.
-- DNS Poisoner (block any site and AV sites)
+- **Keylogger**: Start or stop keylogging.
+  - `/start_keylogger`, `/stop_keylogger`
+- **Proxy**: Host a proxy with ngrok.
+  - `/start_proxy`, `/stop_proxy`
+- **DNS Poisoner**: Block or unblock domains, including AV sites.
+  - `/block_av`, `/unblock_av`
+  - `/block_domain <DOMAIN>`, `/unblock_domain <DOMAIN>`
 
-### Modules (auto installable)
+---
 
-#### Camera
-- List Cameras.
-- Snap Camera.
+### Modules (Auto-Installable)
+Modules are precompiled and hosted to save payload space.
+
+#### Camera Module
+- **List Cameras**: `/list_cameras`
+- **Capture Webcam**: `/capture_webcam <INDEX>`
+
+---
+
+## Installation
+
+### Prerequisites
+- A working Redis server.
+- A Telegram bot token and Chat ID.
+
+
 
 ## Installation
 
@@ -54,7 +95,7 @@ git clone https://github.com/python312/pierat.git
 cd pierat
 ```
 
-Create enviorment and install requirments.
+Create environment and install requirements.
 
 ```
 python -m venv pierat
@@ -76,8 +117,13 @@ The system operates with the ```populator.py``` script, which serves as the sing
 ## Usage
 
 1. Compile ```main.py``` with your favourite compiler, e.g ```pyinstaller``` ```nuitka```
-2. Run ```populator.py``` in the background
-3. Deploy the main.py executable.
+2. Run ```populator.py``` in the background of your computer.
+3. Deploy the main.py executable to target machine.
+4. On the Telegram Bot send ```/list_computers``` to list computers connected and ```/set_computer <COMPUTER_ID>``` to channel commands into that computer
+
+
+
+
 ## Acknowledgements
 
 - ChatGPT, helped me in some of the minor things / bugs.
