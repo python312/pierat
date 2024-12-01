@@ -129,7 +129,9 @@ The system operates with the ```populator.py``` script, which serves as the sing
 4. On the Telegram Bot send ```/list_computers``` to list computers connected and ```/set_computer <COMPUTER_ID>``` to channel commands into that computer
 
 
+## Star History
 
+[![Star History Chart](https://api.star-history.com/svg?repos=python312/pierat&type=Date)](https://star-history.com/#python312/pierat&Date)
 
 ## Acknowledgements
 
